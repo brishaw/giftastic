@@ -63,9 +63,19 @@ hr {
 
 /*-------------------------------------------------- */
 
+
+
 #my-images img {
   width: 275px;
   height: 170px;
+}
+
+#my-images p {
+  margin: 0 0 0 -275px;
+  position: absolute;
+  display: inline-block;
+  background-color: rgba(255,255,255,.7);
+  padding: 5px;
 }
 
 .topic {
@@ -75,4 +85,8 @@ hr {
 .topic:hover {
   background-color: lightblue;
   transition: 500ms ease all;
+}
+
+.topic-i {
+  padding-left: 7px;
 }

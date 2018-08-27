@@ -15,24 +15,44 @@ function displayTopicInfo() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
+        
 
-    console.log(response);
+
+    
         // storing the data from the AJAX request in the results variable
         var results = response.data;
 
+        
+        
+
         // Looping through each result item
         for (var i = 0; i < results.length; i++) {
+
+            
+
+            var rating = response.data[i].rating;
+            console.log(rating);
+            var p = $("<p>").text("Rated: " + rating);
+            
+            var icon = "<i class='topic-i fas fa-cloud-download-alt'></i>";
+
         // Creating and storing an image tag
         var topicImage = $("<img>");
         // Setting the src attribute of the image to a property pulled off the result item
         topicImage.attr("src", results[i].images.fixed_width.url);
 
         // // Appending the paragraph and image tag to the animalDiv
-        // animalDiv.append(p);
-        // animalDiv.append(animalImage);
+        //     topicDiv.append(topicImage);
+        // topicDiv.append(p);
+        
 
         // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+        p.append(icon);
+            $("#my-images").prepend(p);
         $("#my-images").prepend(topicImage);
+        
+        
         
         }
 
@@ -62,11 +82,21 @@ function displayTopicInfo() {
 
 } // end renderButtons();
 
+$("#add-topic").on("click", function(event){
 
-$(".topic").on("click", function (event) {
     event.preventDefault();
 
-});
+    var topicInput = $("#topic-input").val().trim();
+
+    topics.push(topicInput);
+
+    renderButtons();
+}) // end add-topic
+
+// $(".topic").on("click", function (event) {
+//     event.preventDefault();
+
+// });
 
 
 $(document).on("click", ".topic", displayTopicInfo);
