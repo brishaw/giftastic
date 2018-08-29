@@ -63,7 +63,10 @@ hr {
 
 /*-------------------------------------------------- */
 
-
+body {
+  background-color: #011b2b;
+  color: #51BCFF;
+}
 
 #my-images img {
   width: 275px;
@@ -74,19 +77,41 @@ hr {
   margin: 0 0 0 -275px;
   position: absolute;
   display: inline-block;
+  color: #012F4C;
   background-color: rgba(255,255,255,.7);
   padding: 5px;
+}
+
+.topic, .btn-topic {
+  background-color: #024F7F;
+  border-color: #012F4C;
+  color: #51BCFF;
 }
 
 .topic {
   cursor: pointer;
 }
 
-.topic:hover {
-  background-color: lightblue;
+.topic:hover, .btn-topic:hover {
+  background-color: #295E7F;
   transition: 500ms ease all;
 }
 
 .topic-i {
   padding-left: 7px;
+}
+
+.footer-bg {
+  background-color: #343a40;
+}
+
+@media only screen and (max-width: 415px) {
+    #my-images img {
+        width: 414px;
+        height: 240px;
+    }
+
+    #my-images p {
+      margin: 0 0 0 -414px;
+    }
 }
