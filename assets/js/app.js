@@ -11,7 +11,7 @@ function displayTopicInfo() {
 
     var topic = $(this).attr("data-topic");
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=lGNx50F6NOhKeyW9vGDG7TSYe6QU5uOY&limit=12";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=lGNx50F6NOhKeyW9vGDG7TSYe6QU5uOY&limit=10";
 
     $.ajax({
         url: queryURL,
@@ -32,49 +32,48 @@ function displayTopicInfo() {
         // Looping through each result item
         for (var i = 0; i < results.length; i++) {
 
+            var wrap = $("<div>");
+            wrap.addClass("col-sm-6 wrapper col-md-4 wrapper");
+           
             
 
             var rating = response.data[i].rating;
             
-            //console.log(rating);
-            
-            var p = $("<p>").text("Rated: " + rating);
-            
-            var icon = "<a href='' download><i class='topic-i fas fa-cloud-download-alt'></i></a>";
-
             // Creating and storing an image tag
             var topicImage = $("<img>");
+
+            var p = $("<p>").text("Rated: " + rating);
+
+            var dl = results[i].images.fixed_width.url;
+
+            var icon = "<a href=" + dl + " download=" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
+
 
             topicImage.addClass("still giphy");
             
             // Setting the src attribute of the image to a property pulled off the result item
 
-            // var still_image = topicImage.attr("src", results[i].images.fixed_width_still.url);
-
-            // var animated_image = topicImage.attr("src", results[i].images.fixed_width.url);
-
-            // var state = topicImage.attr("src", results[i].images.fixed_width_still.url);
-
             topicImage.attr("src", results[i].images.fixed_width_still.url);
 
-            // topicImage.addClass("still");
+    
 
             // Appending the paragraph and image tag to the animalDiv
-
-            // topicDiv.append(topicImage);
-            // topicDiv.append(p);
-        
 
             // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
             
             p.append(icon);
 
-            $("#my-images").prepend(p);
+            //$("#my-images").prepend(p);
+            wrap.prepend(p);
 
-            $("#my-images").prepend(topicImage);
+            // $("#my-images").prepend(topicImage);
+            wrap.prepend(topicImage);
+
+            $("#my-images").prepend(wrap);
+
+            console.log("topic image: " + topicImage);
 
         } // end loop
-
 
         $("#my-images").on("click", ".giphy", function(){
 
@@ -86,9 +85,7 @@ function displayTopicInfo() {
                 // play
 
                 $(this).attr("src", src.replace(/\_s.gif/i, ".gif"));
-                $(this).removeClass("still");
-                
-                
+                $(this).removeClass("still");         
             
             } else {
 
@@ -97,43 +94,18 @@ function displayTopicInfo() {
                 $(this).addClass("still");
                 $(this).attr("src", src.replace(/\.gif/i, "_s.gif"));
                 
-            } 
-        })
-  
-        //******** attempt ONE ************ */
-        // $("#my-images img").on("click", function(){
-        //     imgArr = [];
+            }
+            
+            imgArr.push(topicImage);
+            console.log(imgArr);
 
-        //     imgArr.push(this);
+        }) // end pause/play function
 
-        //     console.log(imgArr[0].currentSrc);
-
-        //     var modImgArr = [imgArr[0].currentSrc];
-
-        //     console.log("modImgArr: " + modImgArr);
-        // })
-        // en **** attempt ONE ***
-
-    }) // end ajax response
-
-   
-} // end displayTopicInfo
         
 
-
-
-// $(function () {
-//     $('img').each(function (e) {
-//         var src = $(e).attr('src');
-//         $(e).hover(function () {
-//             $(this).attr('src', src.replace('.gif', '_anim.gif'));
-//         }, function () {
-//             $(this).attr('src', src);
-//         });
-//     });
-// });
-
-
+    }) // end ajax response
+  
+} // end displayTopicInfo
 
     function renderButtons() {
 
@@ -144,8 +116,6 @@ function displayTopicInfo() {
         // jquery button into a variable...my plan is to loop this variable...
         var a = $("<button>");
 
-        //a.addClass("col-md-4");
-
         a.addClass("topic col-md-3 my-col");
 
         a.attr("data-topic", topics[i]);
@@ -153,7 +123,10 @@ function displayTopicInfo() {
         a.text(topics[i]);
 
         $("#my-buttons").append(a);
-        }
+
+        $("#topic-input").val(" ");
+
+    }
 
 } // end renderButtons();
 
@@ -165,7 +138,7 @@ $("#add-topic").on("click", function(event){
 
     var topicInput = $("#topic-input").val().trim();
 
-    topics.push(topicInput);
+    topics.unshift(topicInput);
 
     renderButtons();
 
@@ -174,25 +147,6 @@ $("#add-topic").on("click", function(event){
 $(document).on("click", ".topic", displayTopicInfo);
 
 renderButtons();
-
-
-// function renderColumns() {
-
-//     $("#my-columns").empty();
-
-//     for (j = 0; j < topics.length; j++) {
-
-//         // jquery button into a variable...my plan is to loop this variable...
-//         var c = $("<div>");
-//         c.addClass("col-md-4");
-//         c.text("columns from LOOPS"+[j]);
-//         $("#my-columns").append(c);
-//     }
-
-// } // end renderColumns();
-
-// renderColumns();
-
 
 
 

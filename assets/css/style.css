@@ -68,18 +68,24 @@ body {
   color: #51BCFF;
 }
 
+body > .gifs {
+  padding-bottom: 60px;
+}
+
 #my-images img {
-  width: 275px;
+  width: 100%;
   height: 170px;
 }
 
 #my-images p {
-  margin: 0 0 0 -275px;
+  margin-left: 1rem;
   position: absolute;
   display: inline-block;
   color: #012F4C;
   background-color: rgba(255,255,255,.7);
   padding: 5px;
+  bottom: 0;
+  left: 0;
 }
 
 .topic, .btn-topic {
@@ -105,7 +111,7 @@ body {
   background-color: #343a40;
 }
 
-@media only screen and (max-width: 415px) {
+/* @media only screen and (max-width: 415px) {
     #my-images img {
         width: 414px;
         height: 240px;
@@ -114,4 +120,4 @@ body {
     #my-images p {
       margin: 0 0 0 -414px;
     }
-}
+} */
