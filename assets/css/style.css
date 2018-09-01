@@ -72,22 +72,6 @@ body > .gifs {
   padding-bottom: 60px;
 }
 
-#my-images img {
-  width: 100%;
-  height: 170px;
-}
-
-#my-images p {
-  margin-left: 1rem;
-  position: absolute;
-  display: inline-block;
-  color: #012F4C;
-  background-color: rgba(255,255,255,.7);
-  padding: 5px;
-  bottom: 0;
-  left: 0;
-}
-
 .topic, .btn-topic {
   background-color: #024F7F;
   border-color: #012F4C;
@@ -114,6 +98,26 @@ button.topic {
 
 .topic-i:hover {
   color: rgb(8, 42, 71);
+}
+
+#my-images img {
+  width: 100%;
+  height: 170px;
+}
+
+#my-images img:hover {
+  cursor: pointer;
+}
+
+#my-images p {
+  margin-left: 1rem;
+  position: absolute;
+  display: inline-block;
+  color: #012F4C;
+  background-color: rgba(255,255,255,.7);
+  padding: 5px;
+  bottom: 0;
+  left: 0;
 }
 
 .footer-bg {

@@ -20,23 +20,32 @@ function displayTopicInfo() {
     
         // storing the data from the AJAX request in the results variable
         var results = response.data;
-
+        console.log(results);
         // Looping through each result item
         for (var i = 0; i < results.length; i++) {
 
             var wrap = $("<div>");
             wrap.addClass("col-sm-6 wrapper col-md-4 wrapper");
 
-            var rating = response.data[i].rating;
+            var rating = response.data[i].rating.toUpperCase();
+        
+            //var title = response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", "").trim().substring(0, 15).trim(this) + "...";
             
+
             // Creating and storing an image tag
             var topicImage = $("<img>");
 
-            var p = $("<p>").text("Rated: " + rating);
+            //var p = $("<p>").html("<strong>" + title + "</strong>" + "Rated: " + rating);
+            //var p = $("<p>").text("Rated: " + rating);
+            var p = $("<p>").html("Rated: <strong>" + rating + "</strong>");
 
             var dl = results[i].images.fixed_width.url;
+            // var dl = results[i].embed_url;
+            
+            
+            // var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
-            var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
+            var icon = "<a href=" + dl + " download=" + dl +"><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
             topicImage.addClass("still giphy");
             
