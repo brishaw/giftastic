@@ -94,6 +94,10 @@ body > .gifs {
   color: #51BCFF;
 }
 
+button.topic {
+  outline: none;
+}
+
 .topic {
   cursor: pointer;
 }
@@ -105,6 +109,11 @@ body > .gifs {
 
 .topic-i {
   padding-left: 7px;
+  color: #024F7F;
+}
+
+.topic-i:hover {
+  color: rgb(8, 42, 71);
 }
 
 .footer-bg {

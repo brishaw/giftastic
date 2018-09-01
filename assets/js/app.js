@@ -17,25 +17,15 @@ function displayTopicInfo() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-       
-        //console.log(response);
-        
-
-
     
         // storing the data from the AJAX request in the results variable
         var results = response.data;
-
-        
-        
 
         // Looping through each result item
         for (var i = 0; i < results.length; i++) {
 
             var wrap = $("<div>");
             wrap.addClass("col-sm-6 wrapper col-md-4 wrapper");
-           
-            
 
             var rating = response.data[i].rating;
             
@@ -46,16 +36,13 @@ function displayTopicInfo() {
 
             var dl = results[i].images.fixed_width.url;
 
-            var icon = "<a href=" + dl + " download=" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
-
+            var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
             topicImage.addClass("still giphy");
             
             // Setting the src attribute of the image to a property pulled off the result item
 
             topicImage.attr("src", results[i].images.fixed_width_still.url);
-
-    
 
             // Appending the paragraph and image tag to the animalDiv
 
