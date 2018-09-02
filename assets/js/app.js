@@ -39,8 +39,8 @@ function displayTopicInfo() {
             //var p = $("<p>").text("Rated: " + rating);
             var p = $("<p>").html("Rated: <strong>" + rating + "</strong>");
 
-            var dl = results[i].images.fixed_width.url;
-            // var dl = results[i].embed_url;
+            // var dl = results[i].images.fixed_width.url;
+            var dl = results[i].embed_url;
             
             
             // var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";

@@ -1,8 +1,0 @@
-<FilesMatch "\.(gif)$" >
- 
-
-    ForceType application/octet-stream
-
-    Header add Content-Disposition "attachment"
-
-</FilesMatch>
