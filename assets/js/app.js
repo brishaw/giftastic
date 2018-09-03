@@ -7,6 +7,8 @@ var cols = ["one", "two", "three"];
 
 var imgArr = [];
 
+// begin displayTopicInfo
+// this function will pull 10 images from giphy based on the topic button that was clicked
 function displayTopicInfo() {
 
     var topic = $(this).attr("data-topic");
@@ -39,13 +41,15 @@ function displayTopicInfo() {
             //var p = $("<p>").text("Rated: " + rating);
             var p = $("<p>").html("Rated: <strong>" + rating + "</strong>");
 
-            // var dl = results[i].images.fixed_width.url;
-            var dl = results[i].embed_url;
+            p.addClass("info");
+
+            var dl = results[i].images.fixed_width.url;
+            // var dl = results[i].embed_url;
             
             
             // var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
-            var icon = "<a href=" + dl + " download=" + dl +"><i class='topic-i fas fa-cloud-download-alt'></i></a>";
+            var icon = "<a href=" + dl + " download=" + dl +" target='_blank'><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
             topicImage.addClass("still giphy");
             
@@ -68,40 +72,44 @@ function displayTopicInfo() {
             $("#my-images").prepend(wrap);
 
             console.log("topic image: " + topicImage);
-
+            
         } // end loop
 
-        $("#my-images").on("click", ".giphy", function(){
-
-            var src = $(this).attr("src");
-            //console.log(src);
-
-            if($(this).hasClass("still")) {
-
-                // play
-
-                $(this).attr("src", src.replace(/\_s.gif/i, ".gif"));
-                $(this).removeClass("still");         
-            
-            } else {
-
-                // still
-
-                $(this).addClass("still");
-                $(this).attr("src", src.replace(/\.gif/i, "_s.gif"));
-                
-            }
-            
-            imgArr.push(topicImage);
-            console.log(imgArr);
-
-        }) // end pause/play function
-
-        
-
     }) // end ajax response
-  
+
 } // end displayTopicInfo
+
+
+// begin pause/play function
+// this function will start the images' animation on click and pause it when clicked again
+$("#my-images").on("click", ".giphy", function () {
+
+    var src = $(this).attr("src");
+    //console.log(src);
+
+    if ($(this).hasClass("still")) {
+
+        // play
+
+        $(this).attr("src", src.replace(/\_s.gif/i, ".gif"));
+        $(this).removeClass("still");
+
+    } else {
+
+        // still
+
+        $(this).addClass("still");
+        $(this).attr("src", src.replace(/\.gif/i, "_s.gif"));
+
+    }
+
+    imgArr.push(topicImage);
+    console.log(imgArr);
+
+}) // end pause/play function
+
+// begin renderButtons()
+// The main topic buttons that will generate the gifs...
 
     function renderButtons() {
 
@@ -143,9 +151,5 @@ $("#add-topic").on("click", function(event){
 $(document).on("click", ".topic", displayTopicInfo);
 
 renderButtons();
-
-
-
-
 
 

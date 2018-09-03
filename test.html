@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title></title>
+        <span style="color: #0000ff;"></span>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    </head>
+    <body> 
+           
+
+                <a href="img.png" download="output.png">Download</a>
+
+                <script>
+                    var a = $("<a>")
+                        .attr("href", "http://i.stack.imgur.com/L8rHf.png")
+                        .attr("download", "img.png")
+                        .appendTo("body");
+
+                    a[0].click();
+
+                    a.remove();</script>
+    </body>
+</html>

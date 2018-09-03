@@ -109,7 +109,7 @@ button.topic {
   cursor: pointer;
 }
 
-#my-images p {
+#my-images p.info {
   margin-left: 1rem;
   position: absolute;
   display: inline-block;
