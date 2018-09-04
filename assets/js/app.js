@@ -8,6 +8,7 @@ var cols = ["one", "two", "three"];
 var imgArr = [];
 
 var offset = 0;
+
 // begin displayTopicInfo
 // this function will pull 10 images from giphy based on the topic button that was clicked
 function displayTopicInfo() {
@@ -35,58 +36,47 @@ function displayTopicInfo() {
             wrap.addClass("col-sm-6 wrapper col-md-4 wrapper");
 
             var rating = response.data[i].rating.toUpperCase();
-        
-            //var title = response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", "").trim().substring(0, 15).trim(this) + "...";
-            //var title = response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", "");
 
             // Creating and storing an image tag
             var topicImage = $("<img>");
 
-            //var p = $("<p>").html("<strong>" + title + "</strong>" + "Rated: " + rating);
-            //var p = $("<p>").text("Rated: " + rating);
             var p = $("<p>").html("Rated: <strong>" + rating + "</strong>");
 
             p.addClass("info");
 
             var dl = results[i].images.fixed_width.url;
-            // var dl = results[i].embed_url;
-            
-            // var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
             var icon = "<a href=" + dl + " download=" + dl +" target='_blank'><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
             topicImage.addClass("still giphy blue-tooltip");
             
             // Setting the src attribute of the image to a property pulled off the result item
-
             topicImage.attr("src", results[i].images.fixed_width_still.url);
 
             topicImage.attr("data-toggle", "tooltip");
 
             topicImage.attr("title", response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", ""));
 
-            //topicImage.attr("title", title);
-            // Appending the paragraph and image tag to the animalDiv
-
-            // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-            
+            // Appending the paragraph and image tag             
             p.append(icon);
 
-            //$("#my-images").prepend(p);
             wrap.prepend(p);
 
-            // $("#my-images").prepend(topicImage);
             wrap.prepend(topicImage);
 
             $("#my-images").prepend(wrap);
 
             console.log("topic image: " + topicImage);
 
+            // call the bootstrap tooltip function
             $("[data-toggle='tooltip']").tooltip();
             
         } // end loop
+
+        // adding 10 to the offset variable to provide new content (gifs) each time a button is clicked
         offset = (offset++) + 10;
         console.log("offset= " + offset);
+        
     }) // end ajax response
 
 } // end displayTopicInfo
@@ -147,7 +137,6 @@ $("#my-images").on("click", ".giphy", function () {
 } // end renderButtons();
 
 // user adds topic button with form from top of the page
-
 $("#add-topic").on("click", function(event){
 
     event.preventDefault();
@@ -161,11 +150,6 @@ $("#add-topic").on("click", function(event){
 }) // end add-topic
 
 $(document).on("click", ".topic", displayTopicInfo);
-
-// $(document).on("click", ".info", function(){
-//     console.log("clicked!");
-//     $(this).toggle("fold");
-// })
    
 renderButtons();
 
