@@ -36,6 +36,10 @@ body > .container {
   max-width: 960px;
 }
 
+.z99 {
+  z-index: 99;
+}
+
 a.navbar-brand::after {
   content: url('../images/cbc_4.gif');
   position: absolute;
