@@ -41,7 +41,8 @@ body > .container {
 }
 
 a.navbar-brand::after {
-  content: url('../images/cbc_4.gif');
+  content: "";
+  background-image: url('../images/cbc_4.gif');
   position: absolute;
   top: 5px;
 }
@@ -257,13 +258,15 @@ button.topic {
     border-radius: .25rem;
 }
 
-/* @media only screen and (max-width: 415px) {
-    #my-images img {
-        width: 414px;
-        height: 240px;
-    }
-
-    #my-images p {
-      margin: 0 0 0 -414px;
-    }
-} */
+@media only screen and (max-width: 415px) {
+    a.navbar-brand::after {
+    content: "";
+    background-image: url(../images/cbc_4.gif);
+    position: absolute;
+    top: 5px;
+    background-size: 258px 45px;
+    width: 258px;
+    background-repeat: no-repeat;
+    height: 45px;
+}
+}

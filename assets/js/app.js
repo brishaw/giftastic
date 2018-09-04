@@ -7,13 +7,16 @@ var cols = ["one", "two", "three"];
 
 var imgArr = [];
 
+var offset = 0;
 // begin displayTopicInfo
 // this function will pull 10 images from giphy based on the topic button that was clicked
 function displayTopicInfo() {
 
+     console.log("first offset= " + offset);
+
     var topic = $(this).attr("data-topic");
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=lGNx50F6NOhKeyW9vGDG7TSYe6QU5uOY&limit=10";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=lGNx50F6NOhKeyW9vGDG7TSYe6QU5uOY&limit=10&offset=" + offset + "";
 
     $.ajax({
         url: queryURL,
@@ -82,7 +85,8 @@ function displayTopicInfo() {
             $("[data-toggle='tooltip']").tooltip();
             
         } // end loop
-
+        offset = (offset++) + 10;
+        console.log("offset= " + offset);
     }) // end ajax response
 
 } // end displayTopicInfo
