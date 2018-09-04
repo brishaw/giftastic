@@ -72,13 +72,16 @@ body > .gifs {
   padding-bottom: 60px;
 }
 
+.mt-2rem {
+  margin-top: 2rem;
+}
+
 .z99 {
   z-index: 99;
 }
 
 a.navbar-brand::after {
-  content: "";
-  background-image: url('../images/cbc_4.gif');
+  content: url('../images/cbc_4.gif');
   position: absolute;
   top: 5px;
 }
@@ -133,6 +136,16 @@ button.topic {
   padding: 5px;
   bottom: 0;
   left: 0;
+}
+
+.wx-style {
+  font-size: 11px;
+  float: right;
+}
+
+.wx-style::after {
+  clear: both;
+  content: "\00b0";
 }
 
 /* bootstrap tooltip customizing colors */
@@ -246,3 +259,4 @@ button.topic {
     height: 45px;
   }
 }
+

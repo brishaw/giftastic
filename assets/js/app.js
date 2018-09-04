@@ -81,6 +81,26 @@ function displayTopicInfo() {
 
 } // end displayTopicInfo
 
+function displayWeatherInfo() {
+    var wxQueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=27278,us&units=imperial&APPID=1ed6912e3f31b4ce678c0998a30021be";
+
+    $.ajax({
+        url: wxQueryURL,
+        method: "GET"
+    }).then(function (wxResponse) {
+        var wxResults = wxResponse;
+        var wxName = wxResponse.name;
+        var wxData = wxResponse.main.temp;
+
+        console.log(wxResults, wxName, wxData);
+
+        $("#wx-info").addClass("wx-style");
+        
+        $("#wx-info").text(" " + wxName + " " + wxData);
+
+    }) // end wx ajax call
+
+} // end displayWeahterInfo
 
 // begin pause/play function
 // this function will start the images' animation on click and pause it when clicked again
@@ -149,5 +169,7 @@ $("#add-topic").on("click", function(event){
 $(document).on("click", ".topic", displayTopicInfo);
    
 renderButtons();
+
+displayWeatherInfo();
 
 
