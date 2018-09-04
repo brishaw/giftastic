@@ -105,9 +105,6 @@ $("#my-images").on("click", ".giphy", function () {
 
     }
 
-    imgArr.push(topicImage);
-    console.log(imgArr);
-
 }) // end pause/play function
 
 // begin renderButtons()

@@ -32,21 +32,6 @@ body > .container {
   padding-left: 15px;
 }
 
-.nav-container {
-  max-width: 960px;
-}
-
-.z99 {
-  z-index: 99;
-}
-
-a.navbar-brand::after {
-  content: "";
-  background-image: url('../images/cbc_4.gif');
-  position: absolute;
-  top: 5px;
-}
-
 code {
   font-size: 80%;
 }
@@ -85,6 +70,17 @@ body {
 
 body > .gifs {
   padding-bottom: 60px;
+}
+
+.z99 {
+  z-index: 99;
+}
+
+a.navbar-brand::after {
+  content: "";
+  background-image: url('../images/cbc_4.gif');
+  position: absolute;
+  top: 5px;
 }
 
 .topic, .btn-topic {
@@ -139,29 +135,7 @@ button.topic {
   left: 0;
 }
 
-
-
-/* .tooltip-inner{
- 
-    padding:2px 7px;
- 
-    color:#51BCFF;
- 
-    text-align:center;
- 
-    font-weight: bold;
- 
-    background-color: #024F7F;
- 
-    border: 1px solid #012F4C;   
- 
-} */
-
-/* .tooltip .tooltip-arrow {
-  color: #024F7F;
-  border-color: #024F7F;
-  background-color: #024F7F;
-} */
+/* bootstrap tooltip customizing colors */
 
 .tooltip {
     position: absolute;
@@ -258,8 +232,10 @@ button.topic {
     border-radius: .25rem;
 }
 
+/* media query to adjust the size of animated gif on navbar */
+
 @media only screen and (max-width: 415px) {
-    a.navbar-brand::after {
+  a.navbar-brand::after {
     content: "";
     background-image: url(../images/cbc_4.gif);
     position: absolute;
@@ -268,5 +244,5 @@ button.topic {
     width: 258px;
     background-repeat: no-repeat;
     height: 45px;
-}
+  }
 }
