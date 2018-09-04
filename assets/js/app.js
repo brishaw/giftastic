@@ -23,16 +23,18 @@ function displayTopicInfo() {
         // storing the data from the AJAX request in the results variable
         var results = response.data;
         console.log(results);
+         
         // Looping through each result item
         for (var i = 0; i < results.length; i++) {
-
+            
             var wrap = $("<div>");
+
             wrap.addClass("col-sm-6 wrapper col-md-4 wrapper");
 
             var rating = response.data[i].rating.toUpperCase();
         
             //var title = response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", "").trim().substring(0, 15).trim(this) + "...";
-            
+            //var title = response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", "");
 
             // Creating and storing an image tag
             var topicImage = $("<img>");
@@ -46,17 +48,21 @@ function displayTopicInfo() {
             var dl = results[i].images.fixed_width.url;
             // var dl = results[i].embed_url;
             
-            
             // var icon = "<a href=" + dl + " download" + dl + "><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
             var icon = "<a href=" + dl + " download=" + dl +" target='_blank'><i class='topic-i fas fa-cloud-download-alt'></i></a>";
 
-            topicImage.addClass("still giphy");
+            topicImage.addClass("still giphy blue-tooltip");
             
             // Setting the src attribute of the image to a property pulled off the result item
 
             topicImage.attr("src", results[i].images.fixed_width_still.url);
 
+            topicImage.attr("data-toggle", "tooltip");
+
+            topicImage.attr("title", response.data[i].title.charAt(0).toUpperCase() + response.data[i].title.slice(1).replace("GIF", ""));
+
+            //topicImage.attr("title", title);
             // Appending the paragraph and image tag to the animalDiv
 
             // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
@@ -72,6 +78,8 @@ function displayTopicInfo() {
             $("#my-images").prepend(wrap);
 
             console.log("topic image: " + topicImage);
+
+            $("[data-toggle='tooltip']").tooltip();
             
         } // end loop
 
@@ -150,6 +158,11 @@ $("#add-topic").on("click", function(event){
 
 $(document).on("click", ".topic", displayTopicInfo);
 
+// $(document).on("click", ".info", function(){
+//     console.log("clicked!");
+//     $(this).toggle("fold");
+// })
+   
 renderButtons();
 
 
