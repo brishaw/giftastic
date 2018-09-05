@@ -148,6 +148,20 @@ button.topic {
   content: "\00b0";
 }
 
+.wx-slider-style {
+  display: inline-block;
+  font-size: 11px;
+}
+
+.wx-slider-style li {
+    display: inline-block;
+}
+
+.wx-slider-style li::after {
+  content: " ";
+  
+}
+
 /* bootstrap tooltip customizing colors */
 
 .tooltip {

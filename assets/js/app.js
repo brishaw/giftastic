@@ -82,25 +82,73 @@ function displayTopicInfo() {
 } // end displayTopicInfo
 
 function displayWeatherInfo() {
-    var wxQueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=27278,us&units=imperial&APPID=1ed6912e3f31b4ce678c0998a30021be";
+    
+    function getLocation() {
+        var geolocation = navigator.geolocation;
+        geolocation.getCurrentPosition(showLocation);
+    }
+    function showLocation(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        $("#location").text(latitude + " " + longitude);
+    }
+    getLocation();
+
+    var wxQueryURL = "https://api.openweathermap.org/data/2.5/group?id=4460162,4464368,4487042&units=imperial&APPID=1ed6912e3f31b4ce678c0998a30021be";
+
+// var wxQueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=27278,us&units=imperial&APPID=1ed6912e3f31b4ce678c0998a30021be";
 
     $.ajax({
         url: wxQueryURL,
         method: "GET"
     }).then(function (wxResponse) {
-        var wxResults = wxResponse;
-        var wxName = wxResponse.name;
-        var wxData = wxResponse.main.temp;
 
-        console.log(wxResults, wxName, wxData);
+        console.log(wxResponse);
 
-        $("#wx-info").addClass("wx-style");
-        
-        $("#wx-info").text(" " + wxName + " " + wxData);
+        console.log(wxResponse.list[0].name); // city in triangle (0-chapel hill, 1-durham, 2-raleigh)
+
+        console.log(wxResponse.list[0].main.temp);
+
+        for(i = 0; i < wxResponse.cnt; i++) {
+
+            // container for the wx info
+            var wxInfo = $("<li>");
+            console.log("initial wxInfo: " + wxInfo);
+            
+            // city
+            var city = wxResponse.list[i].name;
+            console.log("city: " + city);
+
+            // wx
+            var cityWx = wxResponse.list[i].main.temp;
+            console.log("cityWx: " + cityWx);
+
+            // add variables to the empty <li>
+            wxInfo.append(city);
+            wxInfo.append(cityWx);
+            console.log("wxInfo: " + wxInfo);
+
+            // add class to ul
+            $("#wx-slider").addClass("wx-slider-style");
+
+            // add li to ul
+            $("#wx-slider").append(wxInfo);
+
+        } // end for loop
+
+        // var wxResults = wxResponse;
+        // var wxName = wxResponse.name;
+        // var wxData = wxResponse.main.temp;
+
+        // console.log(wxResults, wxName, wxData);
+
+        // $("#wx-info").addClass("wx-style");  
+        // $("#wx-info").text(" " + wxName + " " + wxData);
 
     }) // end wx ajax call
 
-} // end displayWeahterInfo
+} // end displayWeatherInfo
 
 // begin pause/play function
 // this function will start the images' animation on click and pause it when clicked again
