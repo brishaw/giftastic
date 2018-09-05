@@ -15,3 +15,6 @@ Using the Giphy API, this web page generates 10 gifs at a time based on my predi
 
  ## What is the goal of this project?
 To learn how to use Giphy's API, how to submit the query URLs and to be familliar with the many different parameters being used within this framework.
+
+## Bonus
+Implemented the OpenWeatherMap API to show the current weather for the RTP. I also used the HTML5 geolocation function to add the users current location displayed as lat and lon.
