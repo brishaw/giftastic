@@ -209,7 +209,7 @@ $("#my-images").on("click", ".giphy", function () {
 
         $("#my-buttons").append(a);
 
-        $("#topic-input").val(" ");
+        $("#topic-input").val("");
 
     }
 
