@@ -84,20 +84,25 @@ function displayTopicInfo() {
 function displayWeatherInfo() {
     
     function getLocation() {
+        
         var geolocation = navigator.geolocation;
+
         geolocation.getCurrentPosition(showLocation);
     }
+
     function showLocation(position) {
+
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
 
-        $("#location").text(latitude + " " + longitude);
+        $("#location").text("Your location: " + latitude + ", " + longitude);
+
+        $("#location").addClass("wx-location");
     }
+
     getLocation();
 
     var wxQueryURL = "https://api.openweathermap.org/data/2.5/group?id=4460162,4464368,4487042&units=imperial&APPID=1ed6912e3f31b4ce678c0998a30021be";
-
-// var wxQueryURL = "https://api.openweathermap.org/data/2.5/weather?zip=27278,us&units=imperial&APPID=1ed6912e3f31b4ce678c0998a30021be";
 
     $.ajax({
         url: wxQueryURL,
@@ -125,7 +130,7 @@ function displayWeatherInfo() {
             console.log("cityWx: " + cityWx);
 
             // add variables to the empty <li>
-            wxInfo.append(city);
+            wxInfo.append(city + " ");
             wxInfo.append(cityWx);
             console.log("wxInfo: " + wxInfo);
 
@@ -135,7 +140,10 @@ function displayWeatherInfo() {
             // add li to ul
             $("#wx-slider").append(wxInfo);
 
+            
         } // end for loop
+
+        
 
         // var wxResults = wxResponse;
         // var wxName = wxResponse.name;
@@ -145,8 +153,20 @@ function displayWeatherInfo() {
 
         // $("#wx-info").addClass("wx-style");  
         // $("#wx-info").text(" " + wxName + " " + wxData);
-
+        
     }) // end wx ajax call
+
+    // put the weather information into a slideshow-type style
+    $("#wx-slider > li:gt(0)").hide();
+
+    setInterval(function () {
+        $('#wx-slider > li:first')
+            .fadeOut(1000)
+            .next()
+            .fadeIn(1000)
+            .end()
+            .appendTo('#wx-slider');
+    }, 3000);
 
 } // end displayWeatherInfo
 
