@@ -76,6 +76,10 @@ body > .gifs {
   margin-top: 2rem;
 }
 
+.p-rel {
+  position: relative;
+}
+
 .z99 {
   z-index: 9999;
 }
@@ -139,14 +143,15 @@ button.topic {
 }
 
 .wx-location {
+  position: absolute;
+  left: 37%;
   font-size: 11px;
-  text-align: center;
-  color: #0b77e7;
+  color: #024F7F;
 }
 
 .wx-slider-style {
   margin: 0;
-  width: 135px;
+  width: 220px;
   position: relative; 
   float: right; 
   font-size: 11px;
@@ -161,6 +166,10 @@ button.topic {
 
 #wx-slider > li::after {
   content: "\00b0";
+}
+
+* {
+  list-style: none !important;
 }
 
 .wx-slider-style::after {
@@ -283,3 +292,8 @@ button.topic {
   }
 }
 
+@media only screen and (max-width: 985px) {
+  .wx-location {
+    display: none;
+  }
+}

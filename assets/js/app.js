@@ -129,9 +129,14 @@ function displayWeatherInfo() {
             var cityWx = wxResponse.list[i].main.temp;
             console.log("cityWx: " + cityWx);
 
+            var wxDesc = wxResponse.list[i].weather[0].description;
+            console.log("wxDesc: " + wxDesc);
+
             // add variables to the empty <li>
             wxInfo.append(city + " ");
+            wxInfo.append(wxDesc + " ");
             wxInfo.append(cityWx);
+
             console.log("wxInfo: " + wxInfo);
 
             // add class to ul
@@ -142,17 +147,6 @@ function displayWeatherInfo() {
 
             
         } // end for loop
-
-        
-
-        // var wxResults = wxResponse;
-        // var wxName = wxResponse.name;
-        // var wxData = wxResponse.main.temp;
-
-        // console.log(wxResults, wxName, wxData);
-
-        // $("#wx-info").addClass("wx-style");  
-        // $("#wx-info").text(" " + wxName + " " + wxData);
         
     }) // end wx ajax call
 
