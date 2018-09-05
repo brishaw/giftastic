@@ -9,6 +9,7 @@ Using the Giphy API, this web page generates 10 gifs at a time based on my predi
 5. The user will see the rating of each gif and a download icon that they can use to download the image. 
 6. The images can be toggled to show or hide their animations by clicking on the images themselves.
 7. Each time images are generated, they will be in groups of 10 and the most recent will be at the top of the page. 
+8. The page is also responsive and can be accessed via mobile, tablet or desktop.
 
  ## Who will use this repo or project?
 **Anyone** who has a passion for something silly, something cute, or something strange - and with a decent amount of free time on their hands.
