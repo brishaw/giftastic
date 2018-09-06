@@ -13,7 +13,7 @@ var offset = 0;
 // this function will pull 10 images from giphy based on the topic button that was clicked
 function displayTopicInfo() {
 
-     console.log("first offset= " + offset);
+     //console.log("first offset= " + offset);
 
     var topic = $(this).attr("data-topic");
 
@@ -26,7 +26,7 @@ function displayTopicInfo() {
     
         // storing the data from the AJAX request in the results variable
         var results = response.data;
-        console.log(results);
+        //console.log(results);
          
         // Looping through each result item
         for (var i = 0; i < results.length; i++) {
@@ -66,7 +66,7 @@ function displayTopicInfo() {
 
             $("#my-images").prepend(wrap);
 
-            console.log("topic image: " + topicImage);
+            //console.log("topic image: " + topicImage);
 
             // call the bootstrap tooltip function
             $("[data-toggle='tooltip']").tooltip();
@@ -75,7 +75,7 @@ function displayTopicInfo() {
 
         // adding 10 to the offset variable to provide new content (gifs) each time a button is clicked
         offset = (offset++) + 10;
-        console.log("offset= " + offset);
+        //console.log("offset= " + offset);
         
     }) // end ajax response
 
@@ -109,35 +109,35 @@ function displayWeatherInfo() {
         method: "GET"
     }).then(function (wxResponse) {
 
-        console.log(wxResponse);
+        //console.log(wxResponse);
 
-        console.log(wxResponse.list[0].name); // city in triangle (0-chapel hill, 1-durham, 2-raleigh)
+        //console.log(wxResponse.list[0].name); // city in triangle (0-chapel hill, 1-durham, 2-raleigh)
 
-        console.log(wxResponse.list[0].main.temp);
+        //console.log(wxResponse.list[0].main.temp);
 
         for(i = 0; i < wxResponse.cnt; i++) {
 
             // container for the wx info
             var wxInfo = $("<li>");
-            console.log("initial wxInfo: " + wxInfo);
+            //console.log("initial wxInfo: " + wxInfo);
             
             // city
             var city = wxResponse.list[i].name;
-            console.log("city: " + city);
+            //console.log("city: " + city);
 
             // wx
             var cityWx = wxResponse.list[i].main.temp;
-            console.log("cityWx: " + cityWx);
+            //console.log("cityWx: " + cityWx);
 
             var wxDesc = wxResponse.list[i].weather[0].description;
-            console.log("wxDesc: " + wxDesc);
+            //console.log("wxDesc: " + wxDesc);
 
             // add variables to the empty <li>
             wxInfo.append(city + " ");
             wxInfo.append(wxDesc + " ");
             wxInfo.append(cityWx);
 
-            console.log("wxInfo: " + wxInfo);
+            //console.log("wxInfo: " + wxInfo);
 
             // add class to ul
             $("#wx-slider").addClass("wx-slider-style");
@@ -169,7 +169,7 @@ function displayWeatherInfo() {
 $("#my-images").on("click", ".giphy", function () {
 
     var src = $(this).attr("src");
-    //console.log(src);
+    ////console.log(src);
 
     if ($(this).hasClass("still")) {
 
