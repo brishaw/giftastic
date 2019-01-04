@@ -1,5 +1,5 @@
 # Giftastic
-Using the Giphy API, this web page generates 10 gifs at a time based on my predifined chosen topics, or a topic chosen by the user. 
+Using the Giphy API, this web page generates 10 gifs at a time based on my predefined chosen topics, or a topic chosen by the user. 
 
  ## How does it work?
 1. The program uses ajax and jQuery to call the Giphy API. It then uses JavaScript and jQuery to change the HTML of the page.
